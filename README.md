@@ -60,3 +60,21 @@ Run the TypeScript checker to see where `any` appears and catch issues early:
 npx tsc --noEmit
 ```
 
+## Arrays (concise)
+
+Arrays are ordered collections with a fixed element type when typed: `number[]`, `string[]`, or `Array<T>` for generics.
+
+- Use typed arrays to keep element shapes explicit (e.g., `User[]`).
+- Prefer `readonly` or `ReadonlyArray<T>` when the array should not be mutated.
+- For heterogeneous tuples use `[type1, type2]` and avoid `any[]` — prefer unions or `unknown[]` with narrowings.
+
+Example:
+
+```ts
+const ids: number[] = [1, 2, 3];
+const pair: [string, number] = ['age', 30];
+const mixed: unknown[] = [1, 'two'];
+```
+
+Keep array types narrow to get full compiler and IDE assistance.
+
