@@ -78,3 +78,15 @@ const mixed: unknown[] = [1, 'two'];
 
 Keep array types narrow to get full compiler and IDE assistance.
 
+## Tuples
+Tuples are fixed-length arrays with known types at each position. Use tuples when the element count and types are known and order matters.
+
+- Declare with explicit types: `[string, number]`.
+- Use `as const` for literal tuples to preserve exact types.
+- Prefer tuples over `any[]` for structured, positional data.
+- When mixing many optional positions, consider an object instead.
+
+Example:
+```ts
+const pair: [string, number] = ['age', 30];
+const coords = [0, 1] as const; // inferred as readonly [0, 1]
